@@ -1,0 +1,9 @@
+D:\Projects\Project-Enigma\BusinessComponent\bin\Debug\BusinessComponent.dll
+D:\Projects\Project-Enigma\BusinessComponent\bin\Debug\BusinessComponent.pdb
+D:\Projects\Project-Enigma\BusinessComponent\bin\Debug\DataAccessLayer.dll
+D:\Projects\Project-Enigma\BusinessComponent\bin\Debug\EntityFramework.dll
+D:\Projects\Project-Enigma\BusinessComponent\bin\Debug\DataAccessLayer.pdb
+D:\Projects\Project-Enigma\BusinessComponent\bin\Debug\EntityFramework.xml
+D:\Projects\Project-Enigma\BusinessComponent\obj\Debug\BusinessComponent.csprojResolveAssemblyReference.cache
+D:\Projects\Project-Enigma\BusinessComponent\obj\Debug\BusinessComponent.dll
+D:\Projects\Project-Enigma\BusinessComponent\obj\Debug\BusinessComponent.pdb

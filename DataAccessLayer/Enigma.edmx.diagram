@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="acbc83fa493c43b99d3098c97a54680e" Name="Diagram1">
+        <EntityTypeShape EntityType="ProjectEnigmaModel.Photo" Width="1.5" PointX="5.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.UserDetail" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.UserPhoto" Width="1.5" PointX="7.5" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.UserProfile" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.UserUser" Width="1.5" PointX="7.5" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.webpages_Membership" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.webpages_OAuthMembership" Width="1.5" PointX="7.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ProjectEnigmaModel.webpages_Roles" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <AssociationConnector Association="ProjectEnigmaModel.FK_UserPhoto_Photo" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectEnigmaModel.FK_UserDetails_UserProfile" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectEnigmaModel.FK_UserPhoto_UserDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectEnigmaModel.FK_UserUser_UserDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectEnigmaModel.FK_UserUser_UserDetails1" ManuallyRouted="false" />
+        <AssociationConnector Association="ProjectEnigmaModel.webpages_UsersInRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

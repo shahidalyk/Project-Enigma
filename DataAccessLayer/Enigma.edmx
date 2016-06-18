@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjectEnigmaModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ProjectEnigmaModelStoreContainer">
+          <EntitySet Name="Photo" EntityType="ProjectEnigmaModel.Store.Photo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserDetails" EntityType="ProjectEnigmaModel.Store.UserDetails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPhoto" EntityType="ProjectEnigmaModel.Store.UserPhoto" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserProfile" EntityType="ProjectEnigmaModel.Store.UserProfile" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserUser" EntityType="ProjectEnigmaModel.Store.UserUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Membership" EntityType="ProjectEnigmaModel.Store.webpages_Membership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ProjectEnigmaModel.Store.webpages_OAuthMembership" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_Roles" EntityType="ProjectEnigmaModel.Store.webpages_Roles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="ProjectEnigmaModel.Store.webpages_UsersInRoles" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_RoleId" Association="ProjectEnigmaModel.Store.fk_RoleId">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_UserProfile" Association="ProjectEnigmaModel.Store.FK_UserDetails_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="fk_UserId" Association="ProjectEnigmaModel.Store.fk_UserId">
+            <End Role="UserProfile" EntitySet="UserProfile" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhoto_Photo" Association="ProjectEnigmaModel.Store.FK_UserPhoto_Photo">
+            <End Role="Photo" EntitySet="Photo" />
+            <End Role="UserPhoto" EntitySet="UserPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhoto_UserDetails" Association="ProjectEnigmaModel.Store.FK_UserPhoto_UserDetails">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserPhoto" EntitySet="UserPhoto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUser_UserDetails" Association="ProjectEnigmaModel.Store.FK_UserUser_UserDetails">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserUser" EntitySet="UserUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUser_UserDetails1" Association="ProjectEnigmaModel.Store.FK_UserUser_UserDetails1">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserUser" EntitySet="UserUser" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="About" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Fullname" Type="nchar" Nullable="false" MaxLength="100" />
+          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="PhotoId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="UserUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserAId" Type="bigint" Nullable="false" />
+          <Property Name="UserBId" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="nvarchar" Nullable="false" MaxLength="30" />
+          <Property Name="ProviderUserId" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="nvarchar" Nullable="false" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="bigint" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_RoleId">
+          <End Role="webpages_Roles" Type="ProjectEnigmaModel.Store.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="ProjectEnigmaModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_UserProfile">
+          <End Role="UserProfile" Type="ProjectEnigmaModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="UserDetails" Type="ProjectEnigmaModel.Store.UserDetails" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_UserId">
+          <End Role="UserProfile" Type="ProjectEnigmaModel.Store.UserProfile" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="ProjectEnigmaModel.Store.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhoto_Photo">
+          <End Role="Photo" Type="ProjectEnigmaModel.Store.Photo" Multiplicity="1" />
+          <End Role="UserPhoto" Type="ProjectEnigmaModel.Store.UserPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPhoto">
+              <PropertyRef Name="PhotoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhoto_UserDetails">
+          <End Role="UserDetails" Type="ProjectEnigmaModel.Store.UserDetails" Multiplicity="1" />
+          <End Role="UserPhoto" Type="ProjectEnigmaModel.Store.UserPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPhoto">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUser_UserDetails">
+          <End Role="UserDetails" Type="ProjectEnigmaModel.Store.UserDetails" Multiplicity="1" />
+          <End Role="UserUser" Type="ProjectEnigmaModel.Store.UserUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserUser">
+              <PropertyRef Name="UserAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUser_UserDetails1">
+          <End Role="UserDetails" Type="ProjectEnigmaModel.Store.UserDetails" Multiplicity="1" />
+          <End Role="UserUser" Type="ProjectEnigmaModel.Store.UserUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserUser">
+              <PropertyRef Name="UserBId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjectEnigmaModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ProjectEnigmaEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Photos" EntityType="ProjectEnigmaModel.Photo" />
+          <EntitySet Name="UserDetails" EntityType="ProjectEnigmaModel.UserDetail" />
+          <EntitySet Name="UserPhotoes" EntityType="ProjectEnigmaModel.UserPhoto" />
+          <EntitySet Name="UserProfiles" EntityType="ProjectEnigmaModel.UserProfile" />
+          <EntitySet Name="UserUsers" EntityType="ProjectEnigmaModel.UserUser" />
+          <EntitySet Name="webpages_Membership" EntityType="ProjectEnigmaModel.webpages_Membership" />
+          <EntitySet Name="webpages_OAuthMembership" EntityType="ProjectEnigmaModel.webpages_OAuthMembership" />
+          <EntitySet Name="webpages_Roles" EntityType="ProjectEnigmaModel.webpages_Roles" />
+          <AssociationSet Name="FK_UserPhoto_Photo" Association="ProjectEnigmaModel.FK_UserPhoto_Photo">
+            <End Role="Photo" EntitySet="Photos" />
+            <End Role="UserPhoto" EntitySet="UserPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDetails_UserProfile" Association="ProjectEnigmaModel.FK_UserDetails_UserProfile">
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+            <End Role="UserDetails" EntitySet="UserDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserPhoto_UserDetails" Association="ProjectEnigmaModel.FK_UserPhoto_UserDetails">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserPhoto" EntitySet="UserPhotoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUser_UserDetails" Association="ProjectEnigmaModel.FK_UserUser_UserDetails">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserUser" EntitySet="UserUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserUser_UserDetails1" Association="ProjectEnigmaModel.FK_UserUser_UserDetails1">
+            <End Role="UserDetails" EntitySet="UserDetails" />
+            <End Role="UserUser" EntitySet="UserUsers" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="ProjectEnigmaModel.webpages_UsersInRoles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="UserProfile" EntitySet="UserProfiles" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Photo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="UserPhotoes" Relationship="ProjectEnigmaModel.FK_UserPhoto_Photo" FromRole="Photo" ToRole="UserPhoto" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="About" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="Fullname" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="UserProfile" Relationship="ProjectEnigmaModel.FK_UserDetails_UserProfile" FromRole="UserDetails" ToRole="UserProfile" />
+          <NavigationProperty Name="UserPhotoes" Relationship="ProjectEnigmaModel.FK_UserPhoto_UserDetails" FromRole="UserDetails" ToRole="UserPhoto" />
+          <NavigationProperty Name="UserUsers" Relationship="ProjectEnigmaModel.FK_UserUser_UserDetails" FromRole="UserDetails" ToRole="UserUser" />
+          <NavigationProperty Name="UserUsers1" Relationship="ProjectEnigmaModel.FK_UserUser_UserDetails1" FromRole="UserDetails" ToRole="UserUser" />
+        </EntityType>
+        <EntityType Name="UserPhoto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int64" Nullable="false" />
+          <Property Name="PhotoId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Photo" Relationship="ProjectEnigmaModel.FK_UserPhoto_Photo" FromRole="UserPhoto" ToRole="Photo" />
+          <NavigationProperty Name="UserDetail" Relationship="ProjectEnigmaModel.FK_UserPhoto_UserDetails" FromRole="UserPhoto" ToRole="UserDetails" />
+        </EntityType>
+        <EntityType Name="UserProfile">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserDetail" Relationship="ProjectEnigmaModel.FK_UserDetails_UserProfile" FromRole="UserProfile" ToRole="UserDetails" />
+          <NavigationProperty Name="webpages_Roles" Relationship="ProjectEnigmaModel.webpages_UsersInRoles" FromRole="UserProfile" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="UserUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserAId" Type="Int64" Nullable="false" />
+          <Property Name="UserBId" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="UserDetail" Relationship="ProjectEnigmaModel.FK_UserUser_UserDetails" FromRole="UserUser" ToRole="UserDetails" />
+          <NavigationProperty Name="UserDetail1" Relationship="ProjectEnigmaModel.FK_UserUser_UserDetails1" FromRole="UserUser" ToRole="UserDetails" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="webpages_OAuthMembership">
+          <Key>
+            <PropertyRef Name="Provider" />
+            <PropertyRef Name="ProviderUserId" />
+          </Key>
+          <Property Name="Provider" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
+          <Property Name="ProviderUserId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" Nullable="false" MaxLength="256" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="UserProfiles" Relationship="ProjectEnigmaModel.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="UserProfile" />
+        </EntityType>
+        <Association Name="FK_UserPhoto_Photo">
+          <End Role="Photo" Type="ProjectEnigmaModel.Photo" Multiplicity="1" />
+          <End Role="UserPhoto" Type="ProjectEnigmaModel.UserPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Photo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPhoto">
+              <PropertyRef Name="PhotoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDetails_UserProfile">
+          <End Role="UserProfile" Type="ProjectEnigmaModel.UserProfile" Multiplicity="1" />
+          <End Role="UserDetails" Type="ProjectEnigmaModel.UserDetail" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="UserProfile">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserPhoto_UserDetails">
+          <End Role="UserDetails" Type="ProjectEnigmaModel.UserDetail" Multiplicity="1" />
+          <End Role="UserPhoto" Type="ProjectEnigmaModel.UserPhoto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserPhoto">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUser_UserDetails">
+          <End Role="UserDetails" Type="ProjectEnigmaModel.UserDetail" Multiplicity="1" />
+          <End Role="UserUser" Type="ProjectEnigmaModel.UserUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserUser">
+              <PropertyRef Name="UserAId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserUser_UserDetails1">
+          <End Role="UserDetails" Type="ProjectEnigmaModel.UserDetail" Multiplicity="1" />
+          <End Role="UserUser" Type="ProjectEnigmaModel.UserUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetails">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserUser">
+              <PropertyRef Name="UserBId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="webpages_Roles" Type="ProjectEnigmaModel.webpages_Roles" Multiplicity="*" />
+          <End Role="UserProfile" Type="ProjectEnigmaModel.UserProfile" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjectEnigmaModelStoreContainer" CdmEntityContainer="ProjectEnigmaEntities">
+          <EntitySetMapping Name="Photos">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.Photo">
+              <MappingFragment StoreEntitySet="Photo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPhotoes">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.UserPhoto">
+              <MappingFragment StoreEntitySet="UserPhoto">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PhotoId" ColumnName="PhotoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserProfiles">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.UserProfile">
+              <MappingFragment StoreEntitySet="UserProfile">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserUsers">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.UserUser">
+              <MappingFragment StoreEntitySet="UserUser">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserAId" ColumnName="UserAId" />
+                <ScalarProperty Name="UserBId" ColumnName="UserBId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_OAuthMembership">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.webpages_OAuthMembership">
+              <MappingFragment StoreEntitySet="webpages_OAuthMembership">
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="ProviderUserId" ColumnName="ProviderUserId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="ProjectEnigmaModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="ProjectEnigmaModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="UserProfile">
+              <ScalarProperty Name="UserId" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

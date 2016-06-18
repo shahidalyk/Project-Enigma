@@ -1,0 +1,15 @@
+C:\Users\Majid Ali\documents\visual studio 2012\Projects\Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Majid Ali\documents\visual studio 2012\Projects\Enigma\Enigma.Domain\bin\Debug\Enigma.Domain.dll
+C:\Users\Majid Ali\documents\visual studio 2012\Projects\Enigma\Enigma.Domain\bin\Debug\Enigma.Domain.pdb
+C:\Users\Majid Ali\documents\visual studio 2012\Projects\Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.dll
+C:\Users\Majid Ali\documents\visual studio 2012\Projects\Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.pdb
+C:\Users\zahid.ali\Desktop\Enigma\Enigma.Domain\bin\Debug\Enigma.Domain.dll
+C:\Users\zahid.ali\Desktop\Enigma\Enigma.Domain\bin\Debug\Enigma.Domain.pdb
+C:\Users\zahid.ali\Desktop\Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.csprojResolveAssemblyReference.cache
+C:\Users\zahid.ali\Desktop\Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.dll
+C:\Users\zahid.ali\Desktop\Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.pdb
+D:\Projects\Project-Enigma\Enigma.Domain\bin\Debug\Enigma.Domain.dll
+D:\Projects\Project-Enigma\Enigma.Domain\bin\Debug\Enigma.Domain.pdb
+D:\Projects\Project-Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.csprojResolveAssemblyReference.cache
+D:\Projects\Project-Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.dll
+D:\Projects\Project-Enigma\Enigma.Domain\obj\Debug\Enigma.Domain.pdb

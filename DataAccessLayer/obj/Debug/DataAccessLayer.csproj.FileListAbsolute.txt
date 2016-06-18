@@ -1,0 +1,8 @@
+D:\Projects\Project-Enigma\DataAccessLayer\bin\Debug\DataAccessLayer.dll.config
+D:\Projects\Project-Enigma\DataAccessLayer\bin\Debug\DataAccessLayer.dll
+D:\Projects\Project-Enigma\DataAccessLayer\bin\Debug\DataAccessLayer.pdb
+D:\Projects\Project-Enigma\DataAccessLayer\bin\Debug\EntityFramework.dll
+D:\Projects\Project-Enigma\DataAccessLayer\bin\Debug\EntityFramework.xml
+D:\Projects\Project-Enigma\DataAccessLayer\obj\Debug\DataAccessLayer.csprojResolveAssemblyReference.cache
+D:\Projects\Project-Enigma\DataAccessLayer\obj\Debug\DataAccessLayer.dll
+D:\Projects\Project-Enigma\DataAccessLayer\obj\Debug\DataAccessLayer.pdb
